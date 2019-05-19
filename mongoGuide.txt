@@ -1,0 +1,80 @@
+##Mongo starters guide
+
+##Interactions with mongo
+
+##vairables
+> var potion ={
+	"name": "invisibility",
+	"vendor": "kettlecooked"
+ }
+
+##change db
+> use database1
+
+##insert document in a collection
+> db.potions.insert(
+  {
+	"name": invisibility",
+	"vendor"kettlecooked"
+  }
+)
+
+##finding from inventory
+> db.potions.find({"name":"invisibility"})
+## mongo will generate an ID
+
+##trydates and embedded documents
+> db.potions.insert(
+ {
+	"name": "invisibility",
+	"vendor": "kettlecooked",
+	"price": 10,99,
+	"score": 59,
+	"tryDate": new Date(2012,8,13),
+	"ingredients": ["newt toes, 42, laughter"],
+	"ratings": {"strength": 2, "flavor": 5},
+ }
+)
+##remove documents
+##this will remove all  of the documents that match the search
+> db.potions.remove(
+	{"name": "Love"}
+)
+
+##update to midify existing docuemnts
+> db.potions.update(
+	{"name": "love"},
+	{"$set": {"price":3.99}}
+ )
+## use {"multi": true} to modify all matching documents
+## use {"$inc": {"count":1}} to increment the count of an existing document
+## use {"upsert": true} if a field doesnt exist to create a new one
+
+##remove fields from docuemnts
+##this removes the field color from all potions
+> db.potions.update(
+	{},
+	{"$unset": {"color": ""}},
+	{"multi": true}
+)
+#use {"$rename": {"score": "grade"}} to update the name of a field
+#use {"$set": {"ingredients.1": 42}} to update a value in an array
+## the .[number] is the place of the object you want to modify in the array
+## or use .$ with multi to update all that match
+## use {"$pop": {"categories": 1}} to remove the last element or -1  for the first
+## use {"$push": {"categories": budget}} to add at the end
+## use {"$pull": {"categories": tasty}} to remove from the array
+
+##finding with operators
+## $gt greater than
+## $gte greater than or equal to
+## $ne not equal
+## $lt less than
+## $lte less than or equal to
+##prices less than 20:
+> db.potions.find({"price": {"$lt":20}})
+##prices greater than 10 and less than 20:
+> db.potions.find({"price": {"$gt":10, "lt":20}})
+##non equal example:
+> db.potions.find({"vendor":{"$ne":"brewers"}})
+## use "$elemMatch" when searching an array to select at least 1 value
