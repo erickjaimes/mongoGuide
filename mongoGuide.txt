@@ -169,6 +169,8 @@ that only authorized processes can access protected data.
 15.What are the components of shared cluster?
 
 Sharded cluster has the following components: shards, query routers and config servers.
+
+
 References:
 https://docs.mongodb.com/manual/faq/fundamentals/#what-platforms-does-mongodb-support
 https://www.guru99.com/mongodb-interview-questions.html
