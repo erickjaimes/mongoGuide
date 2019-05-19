@@ -78,3 +78,97 @@
 ##non equal example:
 > db.potions.find({"vendor":{"$ne":"brewers"}})
 ## use "$elemMatch" when searching an array to select at least 1 value
+
+
+
+
+Mongo questions
+1. How does a collection differ from a table?
+
+Instead of tables, a MongoDB database stores its data in collections.
+A collection holds one or more BSON documents. Documents are analogous
+to records or rowsin a relational database table. Each document has one or more
+fields; fields are similar to the columns in a relational database table.
+
+
+2.What is sharding in MongoDB?
+
+The procedure of storing data records across multiple machines is referred as
+Sharding. It is a MongoDB approach to meet the demands of data growth. It is the
+horizontal partition of data in a database or search engine. Each partition is
+referred as shard or database shard.
+
+
+3.Mention how you can inspect the source code of a function?
+
+To inspect a source code of a function, without any parentheses, the function
+must be invoked.
+
+
+4. What are alternatives to MongoDB?
+
+Cassandra, CouchDB, Redis, Riak, Hbase are a few good alternatives.
+
+
+5.When do we use Namespace in MongoDB?
+
+During sequencing of the names of the database and collection name Namespace is used.
+
+
+6.Explain the situation when an index does not fit into RAM?
+
+When an index is too huge to fit into RAM, then MongoDB reads the index, which is
+faster than reading RAM because the indexes easily fit into RAM if the server has
+got RAM for indexes along with the remaining set.
+
+
+7.How does MongoDB provide consistency?
+
+MongoDB uses the reader-writer locks, allowing simultaneous readers to access any
+supply like a database or any collection. But always offers private access to
+singles writes.
+
+
+8.Explain Replication
+
+Replication is the process of synchronizing data across multiple servers.
+
+
+9.What is use of GridFS in mongodb?
+
+GridFS is used for storing and retrieving the large files like audio, Images, Video files.
+
+
+10.Define primary replica sets?
+
+The primary replica set accepts all write operations from clients.
+
+
+11.Define secondary replica sets.
+
+The secondaries replicate the primary’s oplog and apply the operations to their
+data sets such that the secondaries’ data sets reflect the primary’s data set.
+
+
+12.What is the use of profiler?
+
+Profiler is used to show the performance characteristics of every operation against the database.
+
+
+13.Which type of data mongodb store?
+
+MongoDB stores data in the form of documents, which are JSON-like field and value pairs.
+
+
+14.What is storage encryption?
+
+Storage Encryption encrypts all MongoDB data on the storage or operating system to ensure
+that only authorized processes can access protected data.
+
+
+15.What are the components of shared cluster?
+
+Sharded cluster has the following components: shards, query routers and config servers.
+References:
+https://docs.mongodb.com/manual/faq/fundamentals/#what-platforms-does-mongodb-support
+https://www.guru99.com/mongodb-interview-questions.html
