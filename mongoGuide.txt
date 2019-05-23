@@ -79,9 +79,68 @@
 > db.potions.find({"vendor":{"$ne":"brewers"}})
 ## use "$elemMatch" when searching an array to select at least 1 value
 
+##Introducing Projections
+> db.potions.find(
+	{"grade": {"$gte": 80}},
+	{"vendor": true, "name": true})
+##When selecting fields, all other fields but the _id are set to false
+
+##excluding fields
+> db.potions.find(
+	{"grade": {"$gte": 80}},
+	{"vendor": true, "name": false})
+##all fields but the selected one are set to true
+> db.potions.find(
+	{"grade": {"$gte": 80}},
+	{"vendor": true, "price": true, "_id":false})
+##Tje _id field is always returned whenever selecting or excluding fields
+##its the only field that can be set to false when selecting other fields
+
+##Introducing the cursor
+##When searching for documents, and object is returned to find the method called a cursor subject
+
+> db.potions.find({"vendor":"kettlecooked"})
+#this returns the first 20 documents
+>it
+##this will display the next 20 documents
+>db.potions.find().count()
+##returns the count of matching documents
+
+##Sorting Potions
+> db.potions.find().sort({"price":1})
+##use -1 to order in descending and 1 to order in ascending
+
+##Basic Pagination
+>db.potions.find().limit(3)
+##we limit the search for 3 the first 3 documents
+> db.potions.find().skip(3).limit(3)
+##the first 3 results are skipped and because of the limit, the next 3 are taken
+
+##Inserting Referenced Docuements
+> db.potions.vendors.inser({
+	"_id": "kettlecooked",
+	"phone": 555555555,
+	"organic": true
+})
+##we can specify the unique _id of the document
+> db.potions.inser({
+	"name": "invisibility",
+	"vendor_id": "kettlecooked"
+})
+##or with a referenced document as is the vendor id
+##Querying a referenced document
+> db.potions.find({"name":"invisibility"})
+##first query to retrieve the potion information
+> db.vendors.find({"_id":"kettlecooked"})
+##second query to retrieve vendor information
 
 
 
+
+
+
+
+--------------------------------------------------------------------------------
 Mongo questions
 1. How does a collection differ from a table?
 
