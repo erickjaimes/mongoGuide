@@ -71,10 +71,13 @@
 ## $ne not equal
 ## $lt less than
 ## $lte less than or equal to
+
 ##prices less than 20:
 > db.potions.find({"price": {"$lt":20}})
+
 ##prices greater than 10 and less than 20:
 > db.potions.find({"price": {"$gt":10, "lt":20}})
+
 ##non equal example:
 > db.potions.find({"vendor":{"$ne":"brewers"}})
 ## use "$elemMatch" when searching an array to select at least 1 value
@@ -113,6 +116,7 @@
 ##Basic Pagination
 >db.potions.find().limit(3)
 ##we limit the search for 3 the first 3 documents
+
 > db.potions.find().skip(3).limit(3)
 ##the first 3 results are skipped and because of the limit, the next 3 are taken
 
@@ -129,10 +133,16 @@
 })
 ##or with a referenced document as is the vendor id
 ##Querying a referenced document
+
 > db.potions.find({"name":"invisibility"})
 ##first query to retrieve the potion information
+
 > db.vendors.find({"_id":"kettlecooked"})
 ##second query to retrieve vendor information
+
+>db.users.find({},{"email":true,"favorites":true})
+##with a single query we got the email and the favorite potions
+
 
 
 
