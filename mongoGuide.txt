@@ -143,6 +143,17 @@
 >db.users.find({},{"email":true,"favorites":true})
 ##with a single query we got the email and the favorite potions
 
+##Atomic write operations
+> db.users.insert({
+	"username": "Azrius",
+	"email": axrius@example.com",
+	"favorites": ["Newt...,"Sleeping","Love"]
+})
+##if an update on the email and favorites occurs but there is an error in the potion then no update will occur
+##when referencing vendor documents, they now exist outside of potion documents
+
+##Morphing Models
+##
 
 
 
