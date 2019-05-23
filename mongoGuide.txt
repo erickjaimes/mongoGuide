@@ -153,7 +153,21 @@
 ##when referencing vendor documents, they now exist outside of potion documents
 
 ##Morphing Models
-##
+##we can embed comments in potions
+{
+	"name": "invisibility",
+	...
+	"comments":[
+		{
+		"title":"The best potion!",
+		"body": "lorem ispsm abra cadrbra"
+		},
+		...
+		]
+}
+
+##Aggregation Aparitions
+> db.potions.find({}, {"name":true, "vendor": true})
 
 
 
@@ -250,7 +264,33 @@ that only authorized processes can access protected data.
 
 Sharded cluster has the following components: shards, query routers and config servers.
 
+---------------------------------------------------------------------------------------
+Extra information
 
+How is mongo better and different than SQL?
+Yes, mongoDB is better because in contrast with SQL databases, it has a scalable document
+structure therefore becoming more flexible when handling data. This means that it is not
+subject to tables like SQL, meaning one data document can have a certain number of columns
+and another data document in the same collection can have another number of columns.
+
+Administrative commands
+This can be helpful with finding collection details such as storage size, and overall statistics.
+
+Collection statistics:
+> db.<collectionName>.stats()
+> db.printCollectionStats()
+
+Latency statistics:
+> db.<collectionName>.latencyStats()
+
+Collection size for data and indexes:
+> db.<collectionName>.dataSize()
+> db.<collectionName>.storageSize()
+> db.<collectionName>.totalSize()
+> db.<collectionName>.totalIndexSize()
+
+
+------------------------------------------------------------------------------------
 References:
 https://docs.mongodb.com/manual/faq/fundamentals/#what-platforms-does-mongodb-support
 https://www.guru99.com/mongodb-interview-questions.html
